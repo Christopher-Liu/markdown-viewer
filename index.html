@@ -17,64 +17,42 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
+
 <body>
   <div id="main"></div>
 
   <!-- The React script -->
   <script type="text/babel">
 
-    // Code for the user input box
+    // Code for the user markdown text input box
     var UserInputBox = React.createClass({
       getInitialState: function() {
         return {
-          value: "Type your markdown here."
+          value: "Type your markdown here.",
+          markedvalue: "Type your markdown here."
         };
       },
 
       handleChange: function(event) {
         this.setState({
-          value: event.target.value
+          value: event.target.value,
+          markedvalue: marked(event.target.value)
         });
       },
 
       render: function() {
-        return (<textarea value={this.state.value} onChange={this.handleChange} />);
-      }
-    });
-
-
-    // Code for the markdown text output box
-    /*
-    var OutputBox = React.createClass({
-      getInitialState: function() {
-        return {
-          value: ""
-        };
-      },
-
-      render: function() {
         return (
-          <textarea value=(marked({this.state.value}))/>;
+          <div>
+            <textarea value={this.state.value} onChange={this.handleChange} className="inputBox" />
+            <textarea value={this.state.markedvalue} className="outputBox" />
+          </div>
         );
       }
     });
-    */
 
-
-    // Code for the parent component that handles how the input and output boxes interact
-    var TextTransfer = React.createClass({
-
-
-      render: function() {
-        return (
-          <UserInputBox className="inputBox"/>
-          // <OutputBox className="outputBox"/>
-        );
-      }
-    });
 
     ReactDOM.render(
-      <TextTransfer />,
+      <UserInputBox />,
       document.getElementById('main')
     );
 
