@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype HTML>
 <html>
 <head>
   <meta charset="utf-8"/>
@@ -18,26 +18,65 @@
 </head>
 
 <body>
-  <div id="left"></div>
-  <div id="right"></div>
+  <div id="main"></div>
 
   <!-- The React script -->
   <script type="text/babel">
 
+    // Code for the user input box
+    var UserInputBox = React.createClass({
+      getInitialState: function() {
+        return {
+          value: "Type your markdown here."
+        };
+      },
+
+      handleChange: function(event) {
+        this.setState({
+          value: event.target.value
+        });
+      },
+
+      render: function() {
+        return (<textarea value={this.state.value} onChange={this.handleChange} />);
+      }
+    });
 
 
+    // Code for the markdown text output box
+    /*
+    var OutputBox = React.createClass({
+      getInitialState: function() {
+        return {
+          value: ""
+        };
+      },
+
+      render: function() {
+        return (
+          <textarea value=(marked({this.state.value}))/>;
+        );
+      }
+    });
+    */
 
 
+    // Code for the parent component that handles how the input and output boxes interact
+    var TextTransfer = React.createClass({
 
 
+      render: function() {
+        return (
+          <UserInputBox className="inputBox"/>
+          // <OutputBox className="outputBox"/>
+        );
+      }
+    });
 
-
-
-
-
-
-
-
+    ReactDOM.render(
+      <TextTransfer />,
+      document.getElementById('main')
+    );
 
   </script>
 </body>
