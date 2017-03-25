@@ -44,7 +44,7 @@
         return (
           <div>
             <textarea value={this.state.value} onChange={this.handleChange} className="inputBox" />
-            <textarea value={this.state.markedvalue} className="outputBox" />
+            <div className="outputBox" dangerouslySetInnerHTML={{__html: this.state.markedvalue}} />
           </div>
         );
       }
