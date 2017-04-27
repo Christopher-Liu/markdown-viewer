@@ -2,6 +2,11 @@ header{
   text-align: center;
 }
 
+.description-text{
+  padding: 10% 0;
+  text-align: center;
+}
+
 .main{
   display: flex;
   justify-content: center;
@@ -14,5 +19,4 @@ header{
 
 .outputBox{
   width: 150px;
-
 }
